@@ -18,7 +18,7 @@ disableNextPrev   = false
 
 [Languages]
 [Languages.en]
-title        = "AWS System Manager"
+title        = "Building serverless CRUD API microservice with AWS Lambda and function URLs"
 weight       = 1
 languageName = "English"
 
@@ -29,7 +29,8 @@ url        = "https://www.facebook.com/groups/awsstudygroupfcj/"
 weight     = 20
 
 [Languages.vi]
-title        = "AWS System Manager"
+# TODO: update Vietnamese title
+title        = "Building serverless CRUD API microservice with AWS Lambda and function URLs"
 weight       = 2
 languageName = "Tiếng Việt"
 
