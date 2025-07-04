@@ -50,3 +50,6 @@ block = true
 endLevel   = 6
 ordered    = false
 startLevel = 2
+
+[frontmatter]
+lastmod = [ "lastmod", ":git", "date", "publishDate" ]
