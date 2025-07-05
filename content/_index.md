@@ -22,6 +22,6 @@ The high level architecture looks like this:
 
 ![alt text](/images/diagrams/workshop-1-high-level.drawio.svg)
 
-You will guide with a walk-through to achieve the low level architecture:
+You will be guided with a walk-through to achieve the low level architecture:
 
 ![alt text](/images/diagrams/workshop-1-function-urls.drawio.svg)

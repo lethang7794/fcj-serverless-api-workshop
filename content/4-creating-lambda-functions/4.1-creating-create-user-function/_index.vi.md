@@ -15,7 +15,7 @@ pre: " <b> 4.1. </b> "
    - Function name: `create-user`
    - Runtime: `Python 3.13`
    - Architecture: Giữ nguyên `x86_64`
-   - Permissions - `Change default execution role`: Giữ nguyên `Create a new role with basic Lambda permissions` để cho phép Lambda tạo vai trò thực thi mới cho hàm.
+   - Permissions - `Change default execution role`: Giữ nguyên `Create a new role with basic Lambda permissions` để cho phép Lambda tạo role thực thi (execution role) mới cho hàm.
 1. Nhấp vào `Create function`
 
    ![alt text](/images/workshop-1/lambda-create-function--options.png)
@@ -118,6 +118,6 @@ pre: " <b> 4.1. </b> "
 
 1. Tìm kiếm chính sách `AmazonDynamoDBFullAccess`.
 1. Chọn chính sách `AmazonDynamoDBFullAccess`.
-1. Nhấp `Add permissions` để gắn chính sách IAM vào Vai trò IAM.
+1. Nhấp `Add permissions` để gắn chính sách IAM vào IAM role.
 
    ![alt text](/images/workshop-1/lambda-create-function--permission-policy-for-dynamodb.png)

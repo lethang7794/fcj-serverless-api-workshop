@@ -23,7 +23,8 @@ pre: " <b> 8.2. </b> "
 > [!TIP]
 > Phản hồi ở định dạng JSON, bạn có thể chuyển nó qua `jq` để hiển thị đẹp mắt hơn.
 
-> [!NOTE]
-> Bạn cũng có thể gọi hàm Lambda `list-users` bằng cách mở function URL của nó trong trình duyệt.
->
-> ![alt text](/images/workshop-1/lambda-invoke-with-browser--list-users.jpg)
+---
+
+Bạn cũng có thể gọi hàm Lambda `list-users` bằng cách mở function URL của nó trong trình duyệt.
+
+![alt text](/images/workshop-1/lambda-invoke-with-browser--list-users.jpg)

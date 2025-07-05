@@ -14,7 +14,7 @@ Trong workshop này, bạn đã có kinh nghiệm thực hành về:
 - Dịch vụ DynamoDB
   - Tạo một **bảng DynamoDB**.
   - Tương tác với một bảng DynamoDB từ một hàm Lambda.
-  - Khám phá các mục của một bảng DynamoDB sử dụng AWS Management Console.
+  - Khám phá các phần tử của một bảng DynamoDB sử dụng AWS Management Console.
 
 {{<figure src="/images/workshop-1/AWS-Lambda.svg" title="AWS Lambda" width=100pc >}}
 
@@ -36,7 +36,7 @@ Bạn cũng hiểu về cách IAM hoạt động với Lambda và DynamoDB:
   - Khi gọi hàm Lambda sử dụng AWS CLI, bạn đang sử dụng quyền của thông tin xác thực IAM mà bạn đã cấu hình cho AWS CLI.
   - Khi gọi hàm Lambda sử dụng địa chỉ hàm công khai, IAM vẫn cần xác thực/ủy quyền gọi hàm đó (mặc dù IAM cho phép bất kỳ nguyên tắc nào bao gồm cả người dùng không xác thực).
 
-- _vai trò thực thi_ - cung cấp quyền cho các hàm truy cập các tài nguyên khác, ví dụ: bảng DynamoDB.
+- _role thực thi (execution role)_ - cung cấp quyền cho các hàm truy cập các tài nguyên khác, ví dụ: bảng DynamoDB.
 
 ## Tổng kết
 
