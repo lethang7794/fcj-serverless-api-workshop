@@ -44,14 +44,15 @@ Hãy tổng kết nhanh kiến trúc của workshop:
 
 ![alt text](/images/diagrams/workshop-1-function-urls.drawio.svg)
 
-- Microservice CRUD API serverless của chúng tôi được phục vụ qua _URL hàm (function URL)_.
+- Serverless CRUD API microservice của chúng ta được phục vụ qua _URL hàm (function URL)_.
 - URL hàm (function URL) là một URL công khai có thể được truy cập bởi bất kỳ ai.
 - Định tuyến đến từng hoạt động CRUD được thực hiện bởi ứng dụng người dùng cuối thông qua _URL hàm (function URL)_ duy nhất của từng hàm Lambda.
 
-Bạn có thể thấy rằng expose các microservice CRUD API serverless của chúng ta cho người dùng cuối qua _URL hàm (function URL)_ không phải là một ý tưởng hay.
+> [!IMPORTANT]
+> Bạn có thể thấy rằng việc expose các Serverless CRUD API microservice của chúng ta cho người dùng cuối qua _URL hàm (function URL)_ không phải là một giải pháp phù hợp nếu chúng ta có thêm tài nguyên.
 
 > [!NOTE]
-> Mặc dù ỦL hàm không phải là một lựa chọn phù hợp cho trường hợp của chúng tôi, nó vẫn là một cách nhanh chóng, đơn giản để expose một hàm Lambda như một webhook (tất nhiên với xác thực cơ bản hoặc xác thực IAM).
+> Việc sử dụng quá nhiều URL hàm không phải là một giải pháp tối ưu, nhưng URL hàm vẫn là một cách nhanh chóng, đơn giản để expose một hàm Lambda như một webhook (tất nhiên với xác thực cơ bản hoặc xác thực IAM).
 
 ## Tiếp theo?
 

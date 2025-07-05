@@ -48,10 +48,11 @@ Let's have a quick recap of the architecture of the workshop:
 - The function URL is a public URL that can be accessed by anyone.
 - The routing to each CRUD operation is done by the consumer app via the unique function URL of each Lambda function.
 
-You can see that exposing our serverless CRUD API microservice to public via function URL is not a good idea.
+> [!IMPORTANT]
+> You can see that exposing our serverless CRUD API microservice to public via function URL is not the best solution if we have more resources.
 
 > [!NOTE]
-> Although function URL is not a good fit for our use case, it's still a quick, simple way to expose a Lambda function as a webhook (of course with basic authentication or IAM authentication).
+> Although using too much function URLs is not a the suitable solution, a single function URL it's still a quick, simple way to expose a Lambda function as a webhook (of course with basic authentication or IAM authentication).
 
 ## What's next?
 
