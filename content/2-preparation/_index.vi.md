@@ -19,6 +19,6 @@ Trước khi bắt đầu workshop này, bạn cần:
 
      ![alt text](/images/workshop-1/AWS-CLI--verify-credential.png)
 
-   - Kết quả của bạn có thể hơi khác so với của tôi.
+   - Kết quả của bạn có thể hơi khác.
 
    - Nếu không thể chạy `aws sts get-caller-identity`, hãy làm theo hướng dẫn [Cài đặt AWS CLI :: BẮT ĐẦU VỚI AWS CLI](https://000011.awsstudygroup.com/3-installcli/).

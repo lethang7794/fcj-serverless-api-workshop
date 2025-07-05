@@ -23,7 +23,7 @@ Lặp lại các bước trong [tạo hàm `create-users`](/4-creating-lambda-fu
 
    def response(status_code, body=None):
        """
-       Hàm trợ giúp để tạo phản hồi HTTP
+       Helper to build HTTP responses
        """
        resp = {
            "statusCode": status_code,
@@ -39,18 +39,18 @@ Lặp lại các bước trong [tạo hàm `create-users`](/4-creating-lambda-fu
 
    def lambda_handler(event, context):
        """
-       Xử lý Lambda để xóa người dùng theo id.
-       Yêu cầu tham số đường dẫn 'id'.
+       Lambda handler to delete a user by id.
+       Expects path parameter 'id'.
        """
        try:
            data = json.loads(event["body"]) if "body" in event else event
        except json.JSONDecodeError:
-           return response(400, {"error": "JSON không hợp lệ: " + event["body"]})
+           return response(400, {"error": "Invalid JSON body: " + event["body"]})
 
        try:
            user_id = data["id"]
        except (KeyError, json.JSONDecodeError):
-           return response(400, {"error": "Thiếu thông tin bắt buộc: id là bắt buộc."})
+           return response(400, {"error": "Invalid request body; id is required."})
 
        try:
            table.delete_item(
@@ -58,7 +58,7 @@ Lặp lại các bước trong [tạo hàm `create-users`](/4-creating-lambda-fu
            )
            return response(204)
        except dynamodb.meta.client.exceptions.ConditionalCheckFailedException:
-           return response(404, {"error": "Không tìm thấy người dùng."})
+           return response(404, {"error": "User not found."})
        except Exception as e:
            return response(500, {"error": str(e)})
    ```

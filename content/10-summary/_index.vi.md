@@ -25,7 +25,7 @@ Trong workshop này, bạn đã có kinh nghiệm thực hành về:
     - Sử dụng AWS CLI
     - Sử dụng bất kỳ trình khách HTTP nào, ví dụ: trình duyệt, `curl`, và _URL hàm (function URL)_.
   - _Đồng bộ_ gọi một hàm Lambda (và chờ phản hồi)
-  - Sử dụng _URL hàm (function URL)_ để hiển thị hàm Lambda cho người dùng công khai, không xác thực (không có thông tin xác thực AWS).
+  - Sử dụng _URL hàm (function URL)_ để expose hàm Lambda cho người dùng công khai, không xác thực (không có thông tin xác thực AWS).
 
 {{<figure src="/images/workshop-1/AWS-Identity-and-Access-Management.svg" title="AWS Identity and Access Management" width=100pc >}}
 

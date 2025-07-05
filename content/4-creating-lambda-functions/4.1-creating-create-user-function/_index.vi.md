@@ -48,7 +48,7 @@ pre: " <b> 4.1. </b> "
 
      def response(status_code, body=None):
          """
-         Hàm trợ giúp để tạo phản hồi HTTP
+         Helper to build HTTP responses
          """
          resp = {
              "statusCode": status_code,
@@ -64,24 +64,24 @@ pre: " <b> 4.1. </b> "
 
      def lambda_handler(event, context):
          """
-         Xử lý Lambda để tạo người dùng và lưu dữ liệu vào DynamoDB.
-         Yêu cầu thân yêu cầu JSON chứa 'id', 'name', 'email' và tùy chọn các thuộc tính khác.
+         Lambda handler to create a user and persist data in DynamoDB.
+         Expects JSON body with 'id', 'name', 'email', and optionally other attributes.
          """
          try:
              data = json.loads(event["body"]) if "body" in event else event
          except json.JSONDecodeError:
-             return response(400, {"error": "JSON không hợp lệ: " + event["body"]})
+             return response(400, {"error": "Invalid JSON body: " + event["body"]})
 
          now = getCurrentTime()
          id = uuid.uuid4()
 
          try:
-             # Xác thực các trường bắt buộc
+             # Validate required fields
              name = data["name"]
              email = data["email"]
          except (KeyError, json.JSONDecodeError):
              return response(
-                 400, {"error": "Thiếu thông tin bắt buộc: name và email là bắt buộc."}
+                 400, {"error": "Invalid request body: name, and email are required."}
              )
 
          item = {
@@ -97,7 +97,7 @@ pre: " <b> 4.1. </b> "
              table.put_item(Item=item, ConditionExpression="attribute_not_exists(id)")
              return response(201, item)
          except dynamodb.meta.client.exceptions.ConditionalCheckFailedException:
-             return response(409, {"error": "Người dùng với id đã tồn tại."})
+             return response(409, {"error": "User with given id already exists."})
          except Exception as e:
              return response(500, {"error": str(e)})
      ```

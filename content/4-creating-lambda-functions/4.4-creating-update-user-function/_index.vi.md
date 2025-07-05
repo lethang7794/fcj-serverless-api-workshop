@@ -28,7 +28,7 @@ Lặp lại các bước trong [tạo hàm `create-users`](/4-creating-lambda-fu
 
    def response(status_code, body=None):
        """
-       Hàm trợ giúp để tạo phản hồi HTTP
+       Helper to build HTTP responses
        """
        resp = {
            "statusCode": status_code,
@@ -44,29 +44,29 @@ Lặp lại các bước trong [tạo hàm `create-users`](/4-creating-lambda-fu
 
    def lambda_handler(event, context):
        """
-       Xử lý Lambda để cập nhật thông tin người dùng theo id.
-       Yêu cầu tham số đường dẫn 'id' và thân yêu cầu JSON chứa các thuộc tính cần cập nhật.
+       Lambda handler to update a user by id.
+       Expects path parameter 'id' and JSON body with attributes to update.
        """
        try:
            data = json.loads(event["body"]) if "body" in event else event
        except json.JSONDecodeError:
-           return response(400, {"error": "JSON không hợp lệ: " + event["body"]})
+           return response(400, {"error": "Invalid JSON body: " + event["body"]})
 
        try:
            user_id = data["id"]
        except (KeyError, json.JSONDecodeError):
-           return response(400, {"error": "Thiếu thông tin bắt buộc: id là bắt buộc."})
+           return response(400, {"error": "Invalid request body; id is required."})
 
        try:
            if not data:
-               raise ValueError("Không có dữ liệu cập nhật được cung cấp.")
+               raise ValueError("No update data provided.")
        except (json.JSONDecodeError, ValueError) as e:
            return response(400, {"error": str(e)})
 
-       data.pop("id", None)  # Xóa id khỏi dữ liệu để tránh cập nhật
-       data["updated_at"] = getCurrentTime()  # Thêm dấu thời gian cập nhật
+       data.pop("id", None)  # Remove id from data to avoid updating it
+       data["updated_at"] = getCurrentTime()  # Add updated_at timestamp
 
-       # Xây dựng UpdateExpression
+       # Build UpdateExpression
        update_expr = "SET " + ", ".join(f"#k{i} = :v{i}" for i, _ in enumerate(data))
        expr_attr_names = {f"#k{i}": k for i, k in enumerate(data)}
        expr_attr_values = {f":v{i}": v for i, v in enumerate(data.values())}
@@ -82,7 +82,7 @@ Lặp lại các bước trong [tạo hàm `create-users`](/4-creating-lambda-fu
            )
            return response(200, result.get("Attributes"))
        except dynamodb.meta.client.exceptions.ConditionalCheckFailedException:
-           return response(404, {"error": "Không tìm thấy người dùng."})
+           return response(404, {"error": "User not found."})
        except Exception as e:
            return response(500, {"error": str(e)})
    ```

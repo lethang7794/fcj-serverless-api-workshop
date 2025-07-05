@@ -23,7 +23,7 @@ Lặp lại các bước trong [tạo hàm `create-users`](/4-creating-lambda-fu
 
    def response(status_code, body=None):
        """
-       Hàm trợ giúp để tạo phản hồi HTTP
+       Helper to build HTTP responses
        """
        resp = {
            "statusCode": status_code,
@@ -39,21 +39,21 @@ Lặp lại các bước trong [tạo hàm `create-users`](/4-creating-lambda-fu
 
    def lambda_handler(event, context):
        """
-       Xử lý Lambda để liệt kê tất cả người dùng với phân trang.
-       Hỗ trợ các tham số truy vấn 'limit' và 'last_key'.
+       Lambda handler to list all users with pagination.
+       Supports query parameters 'limit' and 'last_key'.
        """
 
        try:
            params = json.loads(event["body"]) if "body" in event else event
        except json.JSONDecodeError:
-           return response(400, {"error": "JSON không hợp lệ: " + event["body"]})
+           return response(400, {"error": "Invalid JSON body: " + event["body"]})
 
        limit = int(params["limit"]) if "limit" in params else 10
        last_key = params.get("last_key")
 
        scan_kwargs = {"Limit": limit}
        if last_key:
-           # last_key được mong đợi là id của mục được đánh giá cuối cùng
+           # last_key expected to be the id of the last evaluated item
            scan_kwargs["ExclusiveStartKey"] = {"id": last_key}
 
        try:
