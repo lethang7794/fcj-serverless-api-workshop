@@ -2,7 +2,7 @@
 title: "Gọi hàm update-user"
 weight: 4
 chapter: false
-pre: " <b> 8.5. </b> "
+pre: " <b> 8.4. </b> "
 ---
 
 > [!NOTE]

@@ -1,22 +1,13 @@
 ---
-title: "Function URL and HTTP methods"
-weight: 4
+title: "Function URL và các phương thức HTTP"
+weight: 6
 chapter: false
-pre: " <b> 8.4. </b> "
+pre: " <b> 8.6. </b> "
 ---
 
-When invoke the lambda function with a function URL, you can use any HTTP method: GET, POST, DELETE, PATCH, PUT..., Lambda will treat all of them as the same.
+Khi gọi hàm Lambda thông qua function URL, bạn có thể sử dụng bất kỳ phương thức HTTP nào: GET, POST, DELETE, PATCH, PUT..., Lambda sẽ xử lý tất cả chúng như nhau.
 
-- Try it with `GET`
-
-  ```shell
-  curl 'https://qzpsv22gd3s4qbnfwz2v5yefoy0dmipa.lambda-url.ap-southeast-1.on.aws/' \
-    -X GET \
-    -H 'content-type: application/json' \
-    -d '{ "id": "a3127179-6ba4-4c3b-855a-4f65d4ee6345" }'
-  ```
-
-- Or `POST`
+- Thử với `GET`
 
   ```shell
   curl 'https://qzpsv22gd3s4qbnfwz2v5yefoy0dmipa.lambda-url.ap-southeast-1.on.aws/' \
@@ -25,4 +16,13 @@ When invoke the lambda function with a function URL, you can use any HTTP method
     -d '{ "id": "a3127179-6ba4-4c3b-855a-4f65d4ee6345" }'
   ```
 
-You requests will all succeed and you will receive the same response.
+- Hoặc `POST`
+
+  ```shell
+  curl 'https://qzpsv22gd3s4qbnfwz2v5yefoy0dmipa.lambda-url.ap-southeast-1.on.aws/' \
+    -X GET \
+    -H 'content-type: application/json' \
+    -d '{ "id": "a3127179-6ba4-4c3b-855a-4f65d4ee6345" }'
+  ```
+
+Tất cả các yêu cầu của bạn sẽ thành công và bạn sẽ nhận được cùng một phản hồi.

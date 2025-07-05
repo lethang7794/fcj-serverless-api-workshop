@@ -2,7 +2,7 @@
 title: "Gọi hàm delete-user"
 weight: 5
 chapter: false
-pre: " <b> 8.6. </b> "
+pre: " <b> 8.5. </b> "
 ---
 
 > [!NOTE]
