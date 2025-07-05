@@ -1,14 +1,14 @@
 ---
-title: "Creating get-user function"
+title: "Tạo hàm get-user"
 weight: 3
 chapter: false
 pre: " <b> 4.3. </b> "
 ---
 
-Repeat the steps in [creating `create-users` function](/4-creating-lambda-functions/4.1-creating-create-user-function/), with the following differences:
+Lặp lại các bước trong [tạo hàm `create-users`](/4-creating-lambda-functions/4.1-creating-create-user-function/), với các điểm khác biệt sau:
 
-1. Function name: `get-user`
-1. The code
+1. Tên hàm: `get-user`
+1. Mã nguồn:
 
    ```python
    import os
@@ -23,7 +23,7 @@ Repeat the steps in [creating `create-users` function](/4-creating-lambda-functi
 
    def response(status_code, body=None):
        """
-       Helper to build HTTP responses
+       Hàm trợ giúp để tạo phản hồi HTTP
        """
        resp = {
            "statusCode": status_code,
@@ -39,28 +39,28 @@ Repeat the steps in [creating `create-users` function](/4-creating-lambda-functi
 
    def lambda_handler(event, context):
        """
-       Lambda handler to get a user by id.
-       Expects path parameter 'id'.
+       Xử lý Lambda để lấy thông tin người dùng theo id.
+       Yêu cầu tham số đường dẫn 'id'.
        """
 
        try:
            data = json.loads(event["body"]) if "body" in event else event
        except json.JSONDecodeError:
-           return response(400, {"error": "Invalid JSON body: " + event["body"]})
+           return response(400, {"error": "JSON không hợp lệ: " + event["body"]})
 
        try:
            user_id = data["id"]
        except (KeyError, json.JSONDecodeError):
-           return response(400, {"error": "Invalid request body; id is required."})
+           return response(400, {"error": "Thiếu thông tin bắt buộc: id là bắt buộc."})
 
        try:
            result = table.get_item(Key={"id": user_id})
            item = result.get("Item")
            if not item:
-               return response(404, {"error": "User not found."})
+               return response(404, {"error": "Không tìm thấy người dùng."})
            return response(200, item)
        except Exception as e:
            return response(500, {"error": str(e)})
    ```
 
-1. Permissions policy: `AmazonDynamoDBReadOnlyAccess`
+1. Chính sách quyền: `AmazonDynamoDBReadOnlyAccess`

@@ -1,14 +1,14 @@
 ---
-title: "Invoking list-user function"
+title: "Gọi hàm list-users"
 weight: 2
 chapter: false
 pre: " <b> 8.2. </b> "
 ---
 
 > [!NOTE]
-> Replace the URL with the function URL of your `list-users` Lambda function.
+> Thay thế URL bằng function URL của hàm Lambda `list-users` của bạn.
 
-- To invoke `list-users` you can use any HTTP client, e.g. `curl`.
+- Để gọi hàm `list-users`, bạn có thể sử dụng bất kỳ HTTP client nào, ví dụ: `curl`.
 
   ```shell
   curl 'https://u2z6j6noy3vnrynejsjqmkgiry0asnnm.lambda-url.ap-southeast-1.on.aws/'
@@ -21,9 +21,9 @@ pre: " <b> 8.2. </b> "
   ![alt text](/images/workshop-1/lambda-invoke-with-curl--list-users.jpg)
 
 > [!TIP]
-> The response is JSON, pipe it to `jq` to have it pretty print.
+> Phản hồi ở định dạng JSON, bạn có thể chuyển nó qua `jq` để hiển thị đẹp mắt hơn.
 
 > [!NOTE]
-> You can invoke the `list-users` Lambda function by open its function URL in a browser.
+> Bạn cũng có thể gọi hàm Lambda `list-users` bằng cách mở function URL của nó trong trình duyệt.
 >
 > ![alt text](/images/workshop-1/lambda-invoke-with-browser--list-users.jpg)

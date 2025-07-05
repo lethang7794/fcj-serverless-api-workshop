@@ -1,27 +1,27 @@
 ---
-title: "Invoking Lambda functions with Lambda function URL"
+title: "Gọi hàm Lambda thông qua Function URL"
 weight: 8
 chapter: false
 pre: " <b> 8. </b> "
 ---
 
-Previously, to invoke a Lambda function, you:
+Trước đây, để gọi một hàm Lambda, bạn có thể:
 
-- open the Lambda function page (in the AWS management console) and invoke the Lambda function by clicking `Test` button.
+- Mở trang hàm Lambda (trong bảng điều khiển quản lý AWS) và gọi hàm Lambda bằng cách nhấp vào nút `Test`.
 
-    (This will use the AWS credential of the AWS account the you've logged in).
+    (Điều này sẽ sử dụng thông tin xác thực AWS của tài khoản AWS mà bạn đã đăng nhập).
 
     ![alt text](/images/diagrams/workshop-1-invoke-with-management-console-low-level.drawio.svg)
 
-- or use the AWS CLI and the function ARN to invoke the Lambda function.
+- Hoặc sử dụng AWS CLI và ARN của hàm để gọi hàm Lambda.
 
-    (This will use the AWS credential that you've configured with AWS CLI).
+    (Điều này sẽ sử dụng thông tin xác thực AWS mà bạn đã cấu hình với AWS CLI).
 
     ![alt text](/images/diagrams/workshop-1-invoke-with-with-cli-low-level.drawio.svg)
 
 ---
-In previous step, we have created 5 functions URL, now we will invoke the function using a browser or any HTTP client (e.g. `curl`)
+Trong bước trước, chúng ta đã tạo 5 function URL, bây giờ chúng ta sẽ gọi hàm bằng trình duyệt hoặc bất kỳ HTTP client nào (ví dụ: `curl`)
 
-The architecture now looks like this
+Kiến trúc lúc này sẽ trông như thế này
 
 ![alt text](/images/diagrams/workshop-1-function-urls.drawio.svg)

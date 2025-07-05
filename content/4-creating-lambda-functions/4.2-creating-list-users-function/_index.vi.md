@@ -1,14 +1,14 @@
 ---
-title: "Creating list-user function"
+title: "Tạo hàm list-users"
 weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-Repeat the steps in [creating `create-users` function](/4-creating-lambda-functions/4.1-creating-create-user-function/), with the following differences:
+Lặp lại các bước trong [tạo hàm `create-users`](/4-creating-lambda-functions/4.1-creating-create-user-function/), với các điểm khác biệt sau:
 
-1. Function name: `list-users`
-1. The code
+1. Tên hàm: `list-users`
+1. Mã nguồn:
 
    ```python
    import os
@@ -23,7 +23,7 @@ Repeat the steps in [creating `create-users` function](/4-creating-lambda-functi
 
    def response(status_code, body=None):
        """
-       Helper to build HTTP responses
+       Hàm trợ giúp để tạo phản hồi HTTP
        """
        resp = {
            "statusCode": status_code,
@@ -39,21 +39,21 @@ Repeat the steps in [creating `create-users` function](/4-creating-lambda-functi
 
    def lambda_handler(event, context):
        """
-       Lambda handler to list all users with pagination.
-       Supports query parameters 'limit' and 'last_key'.
+       Xử lý Lambda để liệt kê tất cả người dùng với phân trang.
+       Hỗ trợ các tham số truy vấn 'limit' và 'last_key'.
        """
 
        try:
            params = json.loads(event["body"]) if "body" in event else event
        except json.JSONDecodeError:
-           return response(400, {"error": "Invalid JSON body: " + event["body"]})
+           return response(400, {"error": "JSON không hợp lệ: " + event["body"]})
 
        limit = int(params["limit"]) if "limit" in params else 10
        last_key = params.get("last_key")
 
        scan_kwargs = {"Limit": limit}
        if last_key:
-           # last_key expected to be the id of the last evaluated item
+           # last_key được mong đợi là id của mục được đánh giá cuối cùng
            scan_kwargs["ExclusiveStartKey"] = {"id": last_key}
 
        try:
@@ -68,4 +68,4 @@ Repeat the steps in [creating `create-users` function](/4-creating-lambda-functi
            return response(500, {"error": str(e)})
    ```
 
-1. Permissions policy: `AmazonDynamoDBReadOnlyAccess`
+1. Chính sách quyền: `AmazonDynamoDBReadOnlyAccess`

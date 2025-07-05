@@ -1,5 +1,5 @@
 ---
-title: "Invoking get-user function"
+title: "Gọi hàm get-user"
 weight: 3
 chapter: false
 pre: " <b> 6.3. </b> "
@@ -7,9 +7,9 @@ pre: " <b> 6.3. </b> "
 
 
 > [!NOTE]
-> Remember to update the **function name** and the **id** of user with `Nguyen Van Dong` name.
+> Nhớ cập nhật **tên hàm** và **id** của người dùng có tên `Nguyen Van Dong`.
 
-1. Run
+1. Thực thi lệnh sau
 
    ```shell
    aws lambda invoke \
@@ -19,7 +19,7 @@ pre: " <b> 6.3. </b> "
        response.json
    ```
 
-2. Check the response
+2. Kiểm tra phản hồi
 
    ```
    cat response.json

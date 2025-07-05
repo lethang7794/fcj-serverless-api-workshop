@@ -1,5 +1,5 @@
 ---
-title: "Creating function URLs for Lambda functions"
+title: "Tạo Function URLs cho các hàm Lambda"
 weight: 7
 chapter: false
 pre: " <b> 7. </b> "
@@ -7,52 +7,52 @@ pre: " <b> 7. </b> "
 
 {{% toc %}}
 
-#### Function URL
+#### Function URL là gì?
 
-A function URL is a dedicated HTTP(S) endpoint for your Lambda function.
+Function URL là một điểm cuối HTTP(S) chuyên dụng cho hàm Lambda của bạn.
 
-- When you create a function URL, Lambda automatically generates a unique URL endpoint for you.
+- Khi bạn tạo function URL, Lambda sẽ tự động tạo một URL endpoint duy nhất cho bạn.
 
-You can control access to your Lambda function URLs using the AuthType parameter:
+Bạn có thể kiểm soát quyền truy cập vào function URL bằng tham số AuthType:
 
-- When you configure your function URL, you must specify one of the following AuthType options:
-  - `AWS_IAM` – Lambda uses AWS Identity and Access Management (IAM) to authenticate and authorize requests based on the IAM principal's identity policy and the function's resource-based policy. Choose this option if you want only authenticated users and roles to invoke your function via the function URL.
-  - `NONE` – Lambda doesn't perform any authentication before invoking your function. However, your function's resource-based policy is always in effect and must grant public access before your function URL can receive requests. Choose this option to allow public, unauthenticated access to your function URL.
+- Khi cấu hình function URL, bạn phải chỉ định một trong các tùy chọn AuthType sau:
+  - `AWS_IAM` – Lambda sử dụng AWS Identity and Access Management (IAM) để xác thực và ủy quyền các yêu cầu dựa trên chính sách danh tính của IAM principal và chính sách dựa trên tài nguyên của hàm. Chọn tùy chọn này nếu bạn chỉ muốn người dùng và vai trò đã xác thực mới có thể gọi hàm của bạn thông qua function URL.
+  - `NONE` – Lambda không thực hiện bất kỳ xác thực nào trước khi gọi hàm của bạn. Tuy nhiên, chính sách dựa trên tài nguyên của hàm luôn có hiệu lực và phải cấp quyền truy cập công khai trước khi function URL của bạn có thể nhận yêu cầu. Chọn tùy chọn này để cho phép truy cập công khai, không xác thực vào function URL của bạn.
 
 > [!NOTE]
-> In this workshop, to simplify the learning we will create functions URL with `AuthType` of `NONE` without implementing any authentication mechanism in the Lambda function.
+> Trong workshop này, để đơn giản hóa việc học tập, chúng ta sẽ tạo function URL với `AuthType` là `NONE` mà không triển khai bất kỳ cơ chế xác thực nào trong hàm Lambda.
 
 > [!WARNING]
-> Except some rare case that you may want your function URL to be public as a web hook, don't use `AuthType` of `NONE` for your function URL. And in these rare case, you still need to implement basic authentication mechanism in your Lambda function. See [Tutorial: Creating a webhook endpoint using a Lambda function URL - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/urls-webhook-tutorial.html)
+> Ngoại trừ một số trường hợp hiếm hoi khi bạn muốn function URL của mình công khai dưới dạng webhook, đừng sử dụng `AuthType` là `NONE` cho function URL của bạn. Và trong những trường hợp hiếm hoi đó, bạn vẫn cần triển khai cơ chế xác thực cơ bản trong hàm Lambda của mình. Xem thêm tại [Hướng dẫn: Tạo webhook endpoint sử dụng Lambda function URL - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/urls-webhook-tutorial.html)
 
-#### Creating function URLs
+#### Tạo Function URLs
 
-In this step, you will create 5 function URLs, one for each Lambda function.
+Trong bước này, bạn sẽ tạo 5 function URL, mỗi URL cho một hàm Lambda.
 
 ![alt text](/images/diagrams/workshop-1-function-urls-high-level.drawio.svg)
 
-1. To create the function URL for `list-users` Lambda function:
+1. Để tạo function URL cho hàm Lambda `list-users`:
 
-   - Open the [Functions section of Lambda console](https://console.aws.amazon.com/lambda/home?#/functions)
+   - Mở [trang Functions trong bảng điều khiển Lambda](https://console.aws.amazon.com/lambda/home?#/functions)
 
-   - Click `list-users` function.
+   - Nhấp vào hàm `list-users`.
 
-   - Open the `Configuration` tab
-   - Open the `Function URL` section
-   - Click `Create function URL`
+   - Mở tab `Cấu hình` (Configuration)
+   - Mở phần `Function URL`
+   - Nhấp vào `Tạo function URL` (Create function URL)
 
      ![alt text](/images/workshop-1/lambda-function-url--create.jpg)
 
-   - In the `Configure Function URL` page, choose `Auth type` of `NONE`.
+   - Trang `Cấu hình Function URL`, chọn `Loại xác thực` (Auth type) là `NONE`.
 
-   - Click `Save`
+   - Nhấp `Lưu` (Save)
 
      ![alt text](/images/workshop-1/lambda-function-url--configure.jpg)
 
-   - After the function URL is created, you can see it in the `Function overview` section or in the `Configuration` / `Function URL` section.
+   - Sau khi tạo xong function URL, bạn có thể xem nó trong phần `Tổng quan về hàm` (Function overview) hoặc trong phần `Cấu hình` / `Function URL`.
 
      ![alt text](/images/workshop-1/lambda-function-url--location.jpg)
 
-   - Copy the function URL, you will need it for the next step.
+   - Sao chép function URL, bạn sẽ cần nó cho bước tiếp theo.
 
-1. Repeat this process to create the function URLs for other Lambda function: `create-user`, `get-user`, `update-user`, `delete-user`.
+1. Lặp lại quy trình này để tạo function URL cho các hàm Lambda khác: `create-user`, `get-user`, `update-user`, `delete-user`.

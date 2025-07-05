@@ -1,14 +1,14 @@
 ---
-title: "Invoking list-user function"
+title: "Gọi hàm list-users"
 weight: 2
 chapter: false
 pre: " <b> 6.2. </b> "
 ---
 
 > [!NOTE]
-> Replace `ap-southeast-1` with your AWS region, `971422684006` with your AWS account number, or replace the whole `arn:aws:lambda:ap-southeast-1:971422684006:function:list-users` with the function ARN from the management console.
+> Thay thế `ap-southeast-1` bằng AWS region của bạn, `971422684006` bằng số tài khoản AWS của bạn, hoặc thay thế toàn bộ `arn:aws:lambda:ap-southeast-1:971422684006:function:list-users` bằng ARN của hàm từ bảng điều khiển quản lý.
 
-1. Run
+1. Thực thi lệnh sau
 
    ```shell
    aws lambda invoke \
@@ -16,7 +16,7 @@ pre: " <b> 6.2. </b> "
        response.json
    ```
 
-2. If the terminal shows:
+2. Nếu terminal hiển thị:
 
    ```shell
    {
@@ -25,9 +25,9 @@ pre: " <b> 6.2. </b> "
    }
    ```
 
-   You have successfully invoked a Lambda function with AWS CLI.
+   Bạn đã gọi hàm Lambda thành công bằng AWS CLI.
 
-3. Check the Lambda function response payload
+3. Kiểm tra nội dung phản hồi từ hàm Lambda
 
    ```
    cat response.json
@@ -37,9 +37,9 @@ pre: " <b> 6.2. </b> "
    {"statusCode": 200, "headers": {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*"}, "body": "{\"users\": [{\"updated_at\": \"2025-05-14T10:07:42\", \"created_at\": \"2025-05-14T10:07:42\", \"id\": \"6c539686-de1c-4bef-85ef-f68a4b5aabe0\", \"email\": \"nguyenvandong@gmail.com\", \"name\": \"Nguyen Van Dong\"}, {\"updated_at\": \"2025-05-14T10:07:29\", \"created_at\": \"2025-05-14T10:07:29\", \"id\": \"a3127179-6ba4-4c3b-855a-4f65d4ee6345\", \"email\": \"nguyenvancanh@gmail.com\", \"name\": \"Nguyen Van Canh\"}, {\"updated_at\": \"2025-05-14T10:07:51\", \"created_at\": \"2025-05-14T10:07:51\", \"id\": \"e1f0cca8-cd19-4d8b-9124-70a63c351e3a\", \"email\": \"nguyenvanem@gmail.com\", \"name\": \"Nguyen Van Em\"}, {\"updated_at\": \"2025-05-14T10:07:15\", \"created_at\": \"2025-05-14T10:07:15\", \"id\": \"bb15f9cb-1379-4783-9f6f-23616d633d2a\", \"email\": \"nguyenvanbinh@gmail.com\", \"name\": \"Nguyen Van Binh\"}]}"}%
    ```
 
-   You should see the users you created in previous step.
+   Bạn sẽ thấy danh sách người dùng đã tạo ở bước trước.
 
-4. [Optional] The response payload is in JSON, you can use `jq` to have a pretty print of it
+4. [Tùy chọn] Dữ liệu phản hồi ở định dạng JSON, bạn có thể sử dụng `jq` để hiển thị đẹp mắt hơn
 
    ```shell
    cat response.json | jq

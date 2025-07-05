@@ -1,17 +1,17 @@
 ---
-title: "Invoking delete-user function"
+title: "Gọi hàm delete-user"
 weight: 5
 chapter: false
 pre: " <b> 5.5. </b> "
 ---
 
-1. Open the [AWS Lambda functions](https://console.aws.amazon.com/lambda/home?#/functions) management console
-2. Click `delete-user` function.
-3. Open the `Test` tab.
-4. In the `Test event` section,
+1. Mở bảng điều khiển [AWS Lambda functions](https://console.aws.amazon.com/lambda/home?#/functions)
+2. Nhấp vào hàm `delete-user`.
+3. Mở tab `Test`.
+4. Trong phần `Test event`,
 
-   - Event name: Fill in `delete-user-event`
-   - Event JSON: Replace the placeholder event with
+   - Event name: Điền `delete-user-event`
+   - Event JSON: Thay thế sự kiện mẫu bằng
 
      ```json
      {
@@ -20,17 +20,17 @@ pre: " <b> 5.5. </b> "
      ```
 
 > [!NOTE]
-> Replace the user id with yours, you can get it in the DynamoDB `Explorer items` or in the response after invoking `list-users`.
+> Thay thế id người dùng bằng id của bạn, bạn có thể lấy được id này trong phần `Explorer items` của DynamoDB hoặc trong phản hồi sau khi gọi hàm `list-users`.
 
-5. Click `Save`
-6. Click the `Test` button.
+5. Nhấp `Save`
+6. Nhấp vào nút `Test`.
 
    ![alt text](/images/workshop-1/lambda-invoke-with-console--delete-user-event.jpg)
 
-7. Verify that the user is updated.
+7. Xác minh rằng người dùng đã bị xóa.
 
-   - Open the [`Explore items` page](https://console.aws.amazon.com/dynamodbv2/home#item-explorer) of the DynamoDB management console.
-   - Click refresh.
-   - Verify that `Nguyen Van Anh` is no longer existed.
+   - Mở trang [`Explore items`](https://console.aws.amazon.com/dynamodbv2/home#item-explorer) trong bảng điều khiển DynamoDB.
+   - Nhấp vào nút làm mới.
+   - Xác minh rằng `Nguyen Van Anh` không còn tồn tại trong bảng nữa.
 
    ![alt text](/images/workshop-1/lambda-invoke-with-console--delete-user-verify.jpg)

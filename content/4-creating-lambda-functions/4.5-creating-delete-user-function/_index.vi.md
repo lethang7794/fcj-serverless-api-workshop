@@ -1,14 +1,14 @@
 ---
-title: "Creating delete-user function"
+title: "Tạo hàm delete-user"
 weight: 5
 chapter: false
 pre: " <b> 4.5. </b> "
 ---
 
-Repeat the steps in [creating `create-users` function](/4-creating-lambda-functions/4.1-creating-create-user-function/), with the following differences:
+Lặp lại các bước trong [tạo hàm `create-users`](/4-creating-lambda-functions/4.1-creating-create-user-function/), với các điểm khác biệt sau:
 
-1. Function name: `delete-user`
-1. The code
+1. Tên hàm: `delete-user`
+1. Mã nguồn:
 
    ```python
    import os
@@ -23,7 +23,7 @@ Repeat the steps in [creating `create-users` function](/4-creating-lambda-functi
 
    def response(status_code, body=None):
        """
-       Helper to build HTTP responses
+       Hàm trợ giúp để tạo phản hồi HTTP
        """
        resp = {
            "statusCode": status_code,
@@ -39,18 +39,18 @@ Repeat the steps in [creating `create-users` function](/4-creating-lambda-functi
 
    def lambda_handler(event, context):
        """
-       Lambda handler to delete a user by id.
-       Expects path parameter 'id'.
+       Xử lý Lambda để xóa người dùng theo id.
+       Yêu cầu tham số đường dẫn 'id'.
        """
        try:
            data = json.loads(event["body"]) if "body" in event else event
        except json.JSONDecodeError:
-           return response(400, {"error": "Invalid JSON body: " + event["body"]})
+           return response(400, {"error": "JSON không hợp lệ: " + event["body"]})
 
        try:
            user_id = data["id"]
        except (KeyError, json.JSONDecodeError):
-           return response(400, {"error": "Invalid request body; id is required."})
+           return response(400, {"error": "Thiếu thông tin bắt buộc: id là bắt buộc."})
 
        try:
            table.delete_item(
@@ -58,15 +58,15 @@ Repeat the steps in [creating `create-users` function](/4-creating-lambda-functi
            )
            return response(204)
        except dynamodb.meta.client.exceptions.ConditionalCheckFailedException:
-           return response(404, {"error": "User not found."})
+           return response(404, {"error": "Không tìm thấy người dùng."})
        except Exception as e:
            return response(500, {"error": str(e)})
    ```
 
-1. Permissions policy: `AmazonDynamoDBFullAccess`
+1. Chính sách quyền: `AmazonDynamoDBFullAccess`
 
 ---
 
-At this point, check [Functions section of Lambda console](https://console.aws.amazon.com/lambda/home?#/functions) and verify you have 5 Lambda functions.
+Lúc này, hãy kiểm tra [mục Functions trong bảng điều khiển Lambda](https://console.aws.amazon.com/lambda/home?#/functions) và xác nhận rằng bạn đã có đủ 5 hàm Lambda.
 
 ![alt text](/images/workshop-1/lambda--list-functions.png)

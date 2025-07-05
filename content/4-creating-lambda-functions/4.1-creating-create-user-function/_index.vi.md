@@ -1,33 +1,33 @@
 ---
-title: "Creating create-user function"
+title: "Tạo hàm create-user"
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-1. Open the [`Functions` section](https://console.aws.amazon.com/lambda/home#/functions) of [Lambda console](https://console.aws.amazon.com/lambda/home)
-1. Click `Create function`
+1. Mở [phần `Functions`](https://console.aws.amazon.com/lambda/home#/functions) trong [bảng điều khiển Lambda](https://console.aws.amazon.com/lambda/home)
+1. Nhấp vào `Create function`
 
    ![alt text](/images/workshop-1/lambda-create-function--functions-page.png)
 
-1. Choose `Author from scratch`
-1. In the `Basic information` section, enter:
+1. Chọn `Author from scratch`
+1. Trong phần `Basic information`, nhập:
    - Function name: `create-user`
    - Runtime: `Python 3.13`
-   - Architecture: Keep `x86_64`
-   - Permissions - `Change default execution role`: Keep `Create a new role with basic Lambda permissions` to let Lambda create new execution role for the function.
-1. Click `Create function`
+   - Architecture: Giữ nguyên `x86_64`
+   - Permissions - `Change default execution role`: Giữ nguyên `Create a new role with basic Lambda permissions` để cho phép Lambda tạo vai trò thực thi mới cho hàm.
+1. Nhấp vào `Create function`
 
    ![alt text](/images/workshop-1/lambda-create-function--options.png)
 
-1. After the function is created, you will be redirected to the detail page for the function.
+1. Sau khi hàm được tạo, bạn sẽ được chuyển hướng đến trang chi tiết của hàm.
 
    ![alt text](/images/workshop-1/lambda-create-function--function-detail.png)
 
-1. In the `Code` tab, `Code source` section:
+1. Trong tab `Code`, phần `Code source`:
 
-   - Wait for the code editor to be loaded.
-   - In the editor tab for `lambda_function.py`, replace all the placeholder code with the following code:
+   - Chờ trình chỉnh sửa mã tải xong.
+   - Trong tab chỉnh sửa cho `lambda_function.py`, thay thế toàn bộ mã giữ chỗ bằng mã sau:
 
      ```python
      import datetime
@@ -48,7 +48,7 @@ pre: " <b> 4.1. </b> "
 
      def response(status_code, body=None):
          """
-         Helper to build HTTP responses
+         Hàm trợ giúp để tạo phản hồi HTTP
          """
          resp = {
              "statusCode": status_code,
@@ -64,24 +64,24 @@ pre: " <b> 4.1. </b> "
 
      def lambda_handler(event, context):
          """
-         Lambda handler to create a user and persist data in DynamoDB.
-         Expects JSON body with 'id', 'name', 'email', and optionally other attributes.
+         Xử lý Lambda để tạo người dùng và lưu dữ liệu vào DynamoDB.
+         Yêu cầu thân yêu cầu JSON chứa 'id', 'name', 'email' và tùy chọn các thuộc tính khác.
          """
          try:
              data = json.loads(event["body"]) if "body" in event else event
          except json.JSONDecodeError:
-             return response(400, {"error": "Invalid JSON body: " + event["body"]})
+             return response(400, {"error": "JSON không hợp lệ: " + event["body"]})
 
          now = getCurrentTime()
          id = uuid.uuid4()
 
          try:
-             # Validate required fields
+             # Xác thực các trường bắt buộc
              name = data["name"]
              email = data["email"]
          except (KeyError, json.JSONDecodeError):
              return response(
-                 400, {"error": "Invalid request body: name, and email are required."}
+                 400, {"error": "Thiếu thông tin bắt buộc: name và email là bắt buộc."}
              )
 
          item = {
@@ -97,27 +97,27 @@ pre: " <b> 4.1. </b> "
              table.put_item(Item=item, ConditionExpression="attribute_not_exists(id)")
              return response(201, item)
          except dynamodb.meta.client.exceptions.ConditionalCheckFailedException:
-             return response(409, {"error": "User with given id already exists."})
+             return response(409, {"error": "Người dùng với id đã tồn tại."})
          except Exception as e:
              return response(500, {"error": str(e)})
      ```
 
-   - Click `Deploy (Ctrl + Shift + U)` to deploy the lambda function.
+   - Nhấp vào `Deploy (Ctrl + Shift + U)` để triển khai hàm lambda.
 
      ![alt text](/images/workshop-1/lambda-create-function--source-code-and-deploy.png)
 
-1. Open the `Configuration` tab
-1. Open the `Permissions` section
-1. In the `Execution Role`, click on the role name `create-user-role-XXXXXXXX` to open the page of the IAM role.
+1. Mở tab `Configuration`
+1. Mở phần `Permissions`
+1. Trong `Execution Role`, nhấp vào tên vai trò `create-user-role-XXXXXXXX` để mở trang IAM role.
 
    ![alt text](/images/workshop-1/lambda-create-function--execution-role.png)
 
-1. In the page of the IAM role, `Permissions` tab, click the `Add permissions` button, choose `Attach Polices`.
+1. Trang IAM role, tab `Permissions`, nhấp vào nút `Add permissions`, chọn `Attach Polices`.
 
    ![alt text](/images/workshop-1/lambda-create-function--attach-permission-policy.png)
 
-1. Search for `AmazonDynamoDBFullAccess` policy.
-1. Select `AmazonDynamoDBFullAccess` policy.
-1. Click `Add permissions` to attach the IAM policy to the IAM Role.
+1. Tìm kiếm chính sách `AmazonDynamoDBFullAccess`.
+1. Chọn chính sách `AmazonDynamoDBFullAccess`.
+1. Nhấp `Add permissions` để gắn chính sách IAM vào Vai trò IAM.
 
    ![alt text](/images/workshop-1/lambda-create-function--permission-policy-for-dynamodb.png)

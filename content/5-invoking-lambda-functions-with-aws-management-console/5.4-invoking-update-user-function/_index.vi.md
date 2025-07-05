@@ -1,17 +1,17 @@
 ---
-title: "Invoking update-user function"
+title: "Gọi hàm update-user"
 weight: 4
 chapter: false
 pre: " <b> 5.4. </b> "
 ---
 
-1. Open the [AWS Lambda functions](https://console.aws.amazon.com/lambda/home?#/functions) management console
-2. Click `update-user` function.
-3. Open the `Test` tab.
-4. In the `Test event` section,
+1. Mở bảng điều khiển [AWS Lambda functions](https://console.aws.amazon.com/lambda/home?#/functions)
+2. Nhấp vào hàm `update-user`.
+3. Mở tab `Test`.
+4. Trong phần `Test event`,
 
-   - Event name: Fill in `update-user-event`
-   - Event JSON: Replace the placeholder event with id of user with `Nguyen Van An` name but with new email and name.
+   - Event name: Điền `update-user-event`
+   - Event JSON: Thay thế sự kiện mẫu bằng id của người dùng có tên `Nguyen Van An` nhưng với email và tên mới.
 
      ```json
      {
@@ -22,20 +22,20 @@ pre: " <b> 5.4. </b> "
      ```
 
 > [!NOTE]
-> Replace the user id with yours, you can get it in the DynamoDB `Explorer items` or in the response after invoking `list-users`.
+> Thay thế id người dùng bằng id của bạn, bạn có thể lấy được id này trong phần `Explorer items` của DynamoDB hoặc trong phản hồi sau khi gọi hàm `list-users`.
 
-5. Click `Save`
-6. Click the `Test` button.
+5. Nhấp `Save`
+6. Nhấp vào nút `Test`.
 
    ![alt text](/images/workshop-1/lambda-invoke-with-console--update-user-event.jpg)
 
-7. Verify that the user is updated.
+7. Xác minh rằng người dùng đã được cập nhật.
 
-   - Open the [`Explore items` page](https://console.aws.amazon.com/dynamodbv2/home#item-explorer) of the DynamoDB management console.
-   - Click refresh.
-   - Verify that:
+   - Mở trang [`Explore items`](https://console.aws.amazon.com/dynamodbv2/home#item-explorer) trong bảng điều khiển DynamoDB.
+   - Nhấp vào nút làm mới.
+   - Xác minh rằng:
 
-     - `Nguyen Van An` is updated to `Nguyen Van Anh`
-     - `nguyenvanan@gmail.com` is updated to `nguyenvananh@gmail.com`
+     - `Nguyen Van An` đã được đổi thành `Nguyen Van Anh`
+     - `nguyenvanan@gmail.com` đã được đổi thành `nguyenvananh@gmail.com`
 
      ![alt text](/images/workshop-1/lambda-invoke-with-console--update-user-verify.jpg)

@@ -1,18 +1,18 @@
 ---
-title: "Invoking create-user function"
+title: "Gọi hàm create-user"
 weight: 1
 chapter: false
 pre: " <b> 5.1. </b> "
 ---
 
-1. Open the [Functions section of Lambda console](https://console.aws.amazon.com/lambda/home?#/functions)
+1. Mở [mục Functions trong bảng điều khiển Lambda](https://console.aws.amazon.com/lambda/home?#/functions)
 
-1. Click `create-user` function.
-1. Open the `Test` tab
-1. In the `Test event` section,
+1. Nhấp vào hàm `create-user`.
+1. Mở tab `Test`
+1. Trong phần `Test event`,
 
-   - Event name: Fill in `create-user-event`
-   - Event JSON: Replace the placeholder event with
+   - Event name: Điền `create-user-event`
+   - Event JSON: Thay thế sự kiện mẫu bằng
 
      ```json
      {
@@ -21,29 +21,29 @@ pre: " <b> 5.1. </b> "
      }
      ```
 
-1. Click `Save`
+1. Nhấp `Save`
 
    ![alt text](/images/workshop-1/lambda-invoke-with-console--test-event.png)
 
-1. Click `Test`
-1. In the `Execution functions` banner, click `Details`.
+1. Nhấp `Test`
+1. Trong bảng thông báo `Execution functions`, nhấp `Details`.
 
    ![alt text](/images/workshop-1/lambda-invoke-with-console--invoke.png)
 
-1. You can check the response of the Lambda function and information about the execution of the Lambda function
+1. Bạn có thể kiểm tra phản hồi của hàm Lambda và thông tin về quá trình thực thi
 
    ![alt text](/images/workshop-1/lambda-invoke-with-console--exection-detail.jpg)
 
-1. Verify that a new user is created in DynamoDB table `UsersTable`
+1. Xác minh rằng một người dùng mới đã được tạo trong bảng DynamoDB `UsersTable`
 
-   - Open the [`Explore items` page](https://console.aws.amazon.com/dynamodbv2/home#item-explorer) of the DynamoDB management console.
-   - Select the `UsersTable` table
-   - The Scan operation should be automatically run.
-   - Verify that a new user is created (in other words, a new DynamoDB item is created.)
+   - Mở trang [`Explore items`](https://console.aws.amazon.com/dynamodbv2/home#item-explorer) trong bảng điều khiển DynamoDB.
+   - Chọn bảng `UsersTable`
+   - Thao tác Scan sẽ tự động chạy.
+   - Xác minh rằng một người dùng mới đã được tạo (nghĩa là một mục DynamoDB mới đã được tạo).
 
    ![alt text](/images/workshop-1/lambda-invoke-with-console--verify-user-created.jpg)
 
-1. Invoke the `create-user` Lambda function in this step with different `Event JSON` to create some more users:
+1. Gọi hàm Lambda `create-user` trong bước này với các `Event JSON` khác nhau để tạo thêm người dùng:
 
    ```json
    {
@@ -73,11 +73,11 @@ pre: " <b> 5.1. </b> "
    }
    ```
 
-1. After invoking the `create-user` Lambda function with these 4 events, you should have 5 users.
+1. Sau khi gọi hàm Lambda `create-user` với 4 sự kiện này, bạn sẽ có tổng cộng 5 người dùng.
 
-   - Open the [`Explore items` page](https://console.aws.amazon.com/dynamodbv2/home#item-explorer) of the DynamoDB management console.
-   - Select the `UsersTable` table
-   - Click Refresh button
-   - Verify that there are 5 items in the DynamoDB table.
+   - Mở trang [`Explore items`](https://console.aws.amazon.com/dynamodbv2/home#item-explorer) trong bảng điều khiển DynamoDB.
+   - Chọn bảng `UsersTable`
+   - Nhấp nút Refresh
+   - Xác minh rằng có 5 mục trong bảng DynamoDB.
 
      ![alt text](/images/workshop-1/lambda-invoke-with-console--verify-dynamodb-items.jpg)

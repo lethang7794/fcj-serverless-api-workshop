@@ -1,14 +1,14 @@
 ---
-title: "Invoking update-user function"
+title: "Gọi hàm update-user"
 weight: 4
 chapter: false
 pre: " <b> 6.4. </b> "
 ---
 
 > [!NOTE]
-> Remember to update the **function name** and the **id** of user with `Nguyen Van Dong` name.
+> Nhớ cập nhật **tên hàm** và **id** của người dùng có tên `Nguyen Van Dong`.
 
-1. Run
+1. Thực thi lệnh sau
 
    ```shell
    aws lambda invoke \
@@ -18,7 +18,7 @@ pre: " <b> 6.4. </b> "
        response.json
    ```
 
-2. Check the response
+2. Kiểm tra phản hồi
 
    ```
    cat response.json
@@ -30,6 +30,6 @@ pre: " <b> 6.4. </b> "
 
    ![alt text](/images/workshop-1/lambda-invoke-with-aws-cli--update-user.jpg)
 
-3. To verify that the user is updated, you can
-   - Invoke `list-users` again.
-   - Or use the DynamoDB console.
+3. Để xác minh rằng người dùng đã được cập nhật, bạn có thể:
+   - Gọi lại hàm `list-users`
+   - Hoặc sử dụng bảng điều khiển DynamoDB

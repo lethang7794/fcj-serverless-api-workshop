@@ -1,5 +1,5 @@
 +++
-title = "Clean up resources"
+title = "Dọn dẹp tài nguyên"
 weight = 9
 chapter = false
 pre = "<b>9. </b>"
@@ -8,45 +8,45 @@ pre = "<b>9. </b>"
 {{% toc %}}
 
 > [!NOTE]
-> If you want to do the next workshop in the series, keep these resources.
+> Nếu bạn muốn thực hiện workshop tiếp theo trong loạt bài, hãy giữ lại các tài nguyên này.
 
-<!-- TODO: link to next workshop -->
+<!-- TODO: liên kết đến workshop tiếp theo -->
 
-You need to cleanup the following resources:
+Bạn cần dọn dẹp các tài nguyên sau:
 
-1. The **DynamoDB table**
+1. **Bảng DynamoDB**
 
-   - Open the [_Tables_ section](https://console.aws.amazon.com/dynamodbv2/home?#tables) of DynamoDB console
-   - Select `UsersTable` table
-   - Click `Delete`
+   - Mở phần [_Tables_](https://console.aws.amazon.com/dynamodbv2/home?#tables) của bảng điều khiển DynamoDB
+   - Chọn bảng `UsersTable`
+   - Nhấp vào `Xóa`
 
      ![alt text](/images/workshop-1/cleanup-dynamodb--resources.jpg)
 
-   - Type `confirm`
-   - Click `Delete`
+   - Nhập `xác nhận`
+   - Nhấp vào `Xóa`
 
      ![alt text](/images/workshop-1/cleanup-dynamodb--confirm.jpg)
 
-1. The **Lambda functions**:
+1. **Hàm Lambda**:
 
-   - Open the [_Functions_ section](https://console.aws.amazon.com/lambda/home#/functions) of Lambda console.
-   - Select 5 functions: `create-user`, `list-user`, `get-user`, `update-user`, `delete-user`.
-   - Click `Actions`, choose `Delete`.
+   - Mở phần [_Functions_](https://console.aws.amazon.com/lambda/home#/functions) của bảng điều khiển Lambda.
+   - Chọn 5 hàm: `create-user`, `list-user`, `get-user`, `update-user`, `delete-user`.
+   - Nhấp vào `Actions`, chọn `Xóa`.
 
      ![alt text](/images/workshop-1/cleanup-lambda--resources.jpg)
 
-   - Type `confirm`, click `Delete`.
+   - Nhập `xác nhận`, nhấp vào `Xóa`.
 
      ![alt text](/images/workshop-1/cleanup-lambda--confirm.jpg)
 
-1. The **IAM roles** used as execution roles for Lambda functions
+1. **Vai trò IAM** được sử dụng làm vai trò thực thi cho hàm Lambda
 
-   - Open the [_Roles_ section](https://console.aws.amazon.com/iam/home#/roles) of IAM console
-   - Select 5 roles: `create-user-role-XXXXXXX`, `delete-user-role-XXXXXXX`, `get-user-role-XXXXXXX`, `list-users-role-XXXXXXX`, `update-user-role-XXXXXXX`
-   - Click `Delete`.
+   - Mở phần [_Roles_](https://console.aws.amazon.com/iam/home#/roles) của bảng điều khiển IAM
+   - Chọn 5 vai trò: `create-user-role-XXXXXXX`, `delete-user-role-XXXXXXX`, `get-user-role-XXXXXXX`, `list-users-role-XXXXXXX`, `update-user-role-XXXXXXX`
+   - Nhấp vào `Xóa`.
 
      ![alt text](/images/workshop-1/cleanup-iam-role--resources.jpg)
 
-   - Type `delete`, click `Delete`
+   - Nhập `xóa`, nhấp vào `Xóa`
 
      ![alt text](/images/workshop-1/cleanup-iam-role--confirm.jpg)

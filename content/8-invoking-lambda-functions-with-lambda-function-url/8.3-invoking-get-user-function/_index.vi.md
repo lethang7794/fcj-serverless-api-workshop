@@ -1,14 +1,14 @@
 ---
-title: "Invoking get-user function"
+title: "Gọi hàm get-user"
 weight: 3
 chapter: false
 pre: " <b> 8.3. </b> "
 ---
 
 > [!NOTE]
-> Replace the URL with the function URL of your `get-user` Lambda function.
+> Thay thế URL bằng function URL của hàm Lambda `get-user` của bạn.
 
-- `get-user` expects the id of the user in the HTTP request's body, choose id of one user from the response of `list-users`.
+- Hàm `get-user` yêu cầu id của người dùng trong phần thân yêu cầu HTTP, hãy chọn id của một người dùng từ phản hồi của `list-users`.
 
   ```shell
   curl 'https://qzpsv22gd3s4qbnfwz2v5yefoy0dmipa.lambda-url.ap-southeast-1.on.aws/' \

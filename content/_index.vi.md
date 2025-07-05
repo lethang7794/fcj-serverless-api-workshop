@@ -1,27 +1,27 @@
 ---
-title: "Building serverless CRUD API microservice with AWS Lambda and function URLs"
+title: "Xây dựng microservice API CRUD không máy chủ với AWS Lambda và function URLs"
 weight: 1
 chapter: false
 ---
 
-# Building serverless CRUD API microservice with AWS Lambda and function URLs
+# Xây dựng microservice API CRUD không máy chủ với AWS Lambda và function URLs
 
-This workshop will guide you to create a CRUD API microservice with only 2 AWS services:
+Workshop này sẽ hướng dẫn bạn tạo một microservice API CRUD chỉ với 2 dịch vụ AWS:
 
 - AWS Lambda
 - Amazon DynamoDB
 
-You will also learn about
+Bạn cũng sẽ tìm hiểu về:
 
-- _directly_ invoking a Lambda function in 3 ways
-- _synchronously_ invoking a Lambda
-- who can invoke your Lambda functions (aka _access permissions_)
-- how your Lambda functions access other AWS resources (e.g. DynamoDB table)
+- Cách _trực tiếp_ gọi một hàm Lambda theo 3 cách khác nhau
+- Cách gọi _đồng bộ_ một hàm Lambda
+- Ai có thể gọi các hàm Lambda của bạn (còn gọi là _quyền truy cập_)
+- Cách các hàm Lambda của bạn truy cập các tài nguyên AWS khác (ví dụ: bảng DynamoDB)
 
-The high level architecture looks like this:
+Kiến trúc cấp cao có dạng như sau:
 
 ![alt text](/images/diagrams/workshop-1-high-level.drawio.svg)
 
-You will guide with a walk-through to achieve the low level architecture:
+Bạn sẽ được hướng dẫn từng bước để đạt được kiến trúc cấp thấp:
 
 ![alt text](/images/diagrams/workshop-1-function-urls.drawio.svg)
